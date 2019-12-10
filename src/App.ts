@@ -1,21 +1,33 @@
 import * as express from 'express';
-// import redis from './redis';
+import redisClient, { getAsync } from './redis';
 
 class App {
-  public express
+  public express = express();
 
   constructor() {
-    this.express = express();
     this.mountRoutes();
   }
 
   private mountRoutes(): void {
     const router = express.Router();
-    router.get('/', (req, res) => {
+
+    router.get('/:key', async (req, res) => {
+      const { key } = req.params;
+
+      const value = await getAsync(key);
+
       res.json({
-        message: 'Hello World!',
+        status: 'ok',
+        value,
       });
     });
+
+    router.get('/', async (_req, res) => {
+      res.json({
+        message: "Send a key to /:key",
+      });
+    });
+
     this.express.use('/', router);
   }
 }
