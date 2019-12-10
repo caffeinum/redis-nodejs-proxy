@@ -1,5 +1,5 @@
 
 test:
-	@node dist/index.js
+	@npm run test
 
 .PHONY: test
