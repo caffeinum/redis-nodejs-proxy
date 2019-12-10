@@ -1,4 +1,5 @@
 import * as express from 'express';
+// import redis from './redis';
 
 class App {
   public express
