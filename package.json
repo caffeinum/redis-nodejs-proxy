@@ -1,0 +1,28 @@
+{
+  "name": "redis-proxy",
+  "version": "1.0.0",
+  "description": "A caching NodeJS instance over Redis",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "redis",
+    "proxy"
+  ],
+  "author": "Aleksey Bykhun",
+  "license": "MIT",
+  "dependencies": {
+    "@types/express": "^4.17.2",
+    "@types/mocha": "^5.2.7",
+    "@types/node": "^12.12.16",
+    "@types/redis": "^2.8.14",
+    "express": "^4.17.1",
+    "redis": "^2.8.0"
+  },
+  "devDependencies": {
+    "mocha": "^6.2.2",
+    "supertest": "^4.0.2",
+    "typescript": "^3.7.3"
+  }
+}
