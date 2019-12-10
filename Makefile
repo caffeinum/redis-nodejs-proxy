@@ -15,6 +15,9 @@ docker-test:
 
 docker: docker-build docker-run docker-test
 
+compose:
+	@docker-compose up
+
 test:
 	@npm run test
 

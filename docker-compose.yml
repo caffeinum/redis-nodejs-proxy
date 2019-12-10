@@ -1,0 +1,14 @@
+app:
+  build: ./
+  volumes:
+    - ./:/var/www/app
+  ports:
+    - 3000:3000
+  environment:
+    - REDIS_ADDR=localhost
+    - REDIS_PORT=6379
+    - NODE_ENV=production
+    - PORT=3000
+    # - NODE_ENV=development
+  command:
+    sh -c 'npm i && node dist/'
