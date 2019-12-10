@@ -8,6 +8,7 @@
     "dev": "tsc --watch",
     "build": "tsc",
     "start": "node --inspect dist",
+    "lint": "eslint src --ext ts",
     "test": "tsc && mocha dist/**/*.spec.js"
   },
   "keywords": [

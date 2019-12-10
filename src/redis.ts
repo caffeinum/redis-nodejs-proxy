@@ -7,4 +7,4 @@ const port = process.env.REDIS_PORT || 6379;
 export const client = redis.createClient(Number(port), host);
 export const getAsync = promisify(client.get).bind(client);
 
-export default client
+export default client;
