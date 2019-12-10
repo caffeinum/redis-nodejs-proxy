@@ -1,6 +1,6 @@
 import * as express from 'express';
-import redisClient, { getAsync } from './redis';
-import { readCache, writeCache } from './cache';
+import { getAsync } from './redis';
+import storage, { readCache, writeCache } from './cache';
 
 class App {
   public express = express();
@@ -15,13 +15,15 @@ class App {
     router.get('/:key', async (req, res) => {
       const { key } = req.params;
 
-      let { error, value } = readCache(key);
+      // eslint-disable-next-line
+      let { error, value } = readCache(storage, key);
 
       if (error) {
+        // debug cache error
         value = await getAsync(key);
       }
 
-      writeCache(key, value);
+      writeCache(storage, key, value);
 
       if (!value) {
         // TODO: handle
@@ -36,7 +38,7 @@ class App {
 
     router.get('/', async (_req, res) => {
       res.json({
-        message: "Send a key to /:key",
+        message: 'Send a key to /:key',
       });
     });
 

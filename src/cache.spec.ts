@@ -1,16 +1,15 @@
 import 'mocha';
 import { expect } from 'chai';
-import { writeCache, readCache } from './cache';
+import storage, { writeCache, readCache } from './cache';
 
 describe('Cache module', () => {
   it('works',
     () => {
-      writeCache('test1', 'Hello!');
+      writeCache(storage, 'test1', 'Hello!');
 
-      const { error, value } = readCache('test1');
+      const { error, value } = readCache(storage, 'test1');
 
       expect(error).to.equal(undefined);
       expect(value).to.equal('Hello!');
-    }
-  );
+    });
 });
