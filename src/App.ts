@@ -1,5 +1,6 @@
 import * as express from 'express';
 import redisClient, { getAsync } from './redis';
+import { readCache, writeCache } from './cache';
 
 class App {
   public express = express();
@@ -14,7 +15,18 @@ class App {
     router.get('/:key', async (req, res) => {
       const { key } = req.params;
 
-      const value = await getAsync(key);
+      let { error, value } = readCache(key);
+
+      if (error) {
+        value = await getAsync(key);
+      }
+
+      writeCache(key, value);
+
+      if (!value) {
+        // TODO: handle
+        // unknown error
+      }
 
       res.json({
         status: 'ok',
