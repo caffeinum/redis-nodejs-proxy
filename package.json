@@ -1,7 +1,7 @@
 {
   "name": "redis-proxy",
   "version": "1.0.0",
-  "repository": "",
+  "repository": "https://github.com/caffeinum/redis-nodejs-proxy",
   "description": "A caching NodeJS instance over Redis",
   "main": "index.js",
   "scripts": {
