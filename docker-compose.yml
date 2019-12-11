@@ -5,9 +5,9 @@ app:
   ports:
     - 3000:3000
   environment:
+    - PORT=3000
     - REDIS_ADDR=host.docker.internal
     - REDIS_PORT=6379
-    - PORT=3000
     - CACHE_EXPIRY_TIME=3600
     - CACHE_CAPACITY=10000
     - NODE_ENV=production
