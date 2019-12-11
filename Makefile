@@ -5,12 +5,13 @@ docker-run:
 	@docker run \
 	  -e "NODE_ENV=production" \
 	  -u "node" \
-		-p 49160:3000 \
+		-net "host" \
+		-p 3000:3000 \
 	 	-d caffeinum/redis-proxy
 	@sleep 1
 
 docker-test:
-	@curl -i localhost:49160
+	@curl -i localhost:3000
 	@echo "\n\nShould print Hello World"
 
 docker: docker-build docker-run docker-test
