@@ -23,11 +23,11 @@ class App {
         value = await getAsync(key);
       }
 
-      writeCache(storage, key, value);
-
       if (!value) {
         // TODO: handle
         // unknown error
+      } else {
+        writeCache(storage, key, value);
       }
 
       res.json({
