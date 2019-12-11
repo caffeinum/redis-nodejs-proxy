@@ -19,4 +19,10 @@ describe('App', () => {
       .get('/test2-test')
       .expect(200)
       .expect('Content-Type', /json/));
+
+  it('can fetch general info',
+    () => supertest(app)
+      .get('/')
+      .expect(200)
+      .expect('Content-Type', /json/));
 });
