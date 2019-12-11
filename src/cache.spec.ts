@@ -4,7 +4,7 @@ import { createCacheStorage, writeCache, readCache } from './cache';
 
 const storage = createCacheStorage({
   CACHE_CAPACITY: 3,
-  CACHE_EXPIRY_TIME: 300,
+  CACHE_EXPIRY_TIME: 20, // ms
 });
 
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
@@ -48,7 +48,7 @@ describe('Cache module', () => {
   it('cache expires', async () => {
     writeCache(storage, 'forgotten-key', 'Should expire');
 
-    await sleep(300);
+    await sleep(20);
 
     const { error, value } = readCache(storage, 'forgotten-key');
 
