@@ -20,9 +20,3 @@ describe('App', () => {
       .expect(200)
       .expect('Content-Type', /json/));
 });
-
-describe('Basic cache test', () => {
-  // saves value in Cache
-
-  // second read is faster
-});

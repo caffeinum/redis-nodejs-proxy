@@ -19,6 +19,15 @@ describe('Cache module', () => {
     expect(value).to.equal('Hello!');
   });
 
+  it('should save even if empty value', () => {
+    writeCache(storage, 'test', undefined);
+
+    const { error, value } = readCache(storage, 'test');
+
+    expect(error).to.equal(undefined);
+    expect(value).to.equal(undefined);
+  });
+
   it('clears least recently used', () => {
     writeCache(storage, 'test1', 'Hello One!');
     writeCache(storage, 'test2', 'Hello Two!');
