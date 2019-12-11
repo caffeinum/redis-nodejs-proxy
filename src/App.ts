@@ -15,12 +15,15 @@ class App {
     router.get('/:key', async (req, res) => {
       const { key } = req.params;
 
+      let fromCache = true;
+
       // eslint-disable-next-line
       let { error, value } = readCache(storage, key);
 
-      if (error) {
+      if (error === 'CACHE_MISS' || error === 'CACHE_EXPIRED') {
         // debug cache error
         value = await getAsync(key);
+        fromCache = false;
       }
 
       if (!value) {
@@ -32,12 +35,14 @@ class App {
 
       res.json({
         status: 'ok',
+        cache: fromCache,
         value,
       });
     });
 
     router.get('/', async (_req, res) => {
       res.json({
+        config: storage.config,
         message: 'Send a key to /:key',
       });
     });
