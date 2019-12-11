@@ -21,4 +21,4 @@ compose:
 test:
 	@npm run test
 
-.PHONY: test
+.PHONY: compose

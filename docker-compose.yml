@@ -5,10 +5,12 @@ app:
   ports:
     - 3000:3000
   environment:
-    - REDIS_ADDR=localhost
+    - REDIS_ADDR=host.docker.internal
     - REDIS_PORT=6379
-    - NODE_ENV=production
     - PORT=3000
+    - CACHE_EXPIRY_TIME=3600
+    - CACHE_CAPACITY=10000
+    - NODE_ENV=production
     # - NODE_ENV=development
   command:
-    sh -c 'npm i && node dist/'
+    sh -c 'npm i && npm run build && node dist/'
