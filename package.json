@@ -5,9 +5,10 @@
   "description": "A caching NodeJS instance over Redis",
   "main": "index.js",
   "scripts": {
-    "dev": "tsc --watch",
+    "dev": "tsc --watch & mocha -w --inspect dist/**/*.spec.js",
     "build": "tsc",
-    "start": "node --inspect dist",
+    "start": "tsc --watch & npm run debug",
+    "debug": "nodemon --inspect dist",
     "lint": "eslint src --ext ts",
     "test": "tsc && mocha dist/**/*.spec.js"
   },
@@ -35,6 +36,7 @@
     "eslint-plugin-import": "^2.19.1",
     "eslint-plugin-promise": "^4.2.1",
     "mocha": "^6.2.2",
+    "nodemon": "^2.0.1",
     "supertest": "^4.0.2",
     "typescript": "^3.7.3"
   }
