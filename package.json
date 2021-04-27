@@ -24,7 +24,7 @@
     "@types/node": "^12.12.16",
     "@types/redis": "^2.8.14",
     "express": "^4.17.1",
-    "redis": "^2.8.0"
+    "redis": "^3.1.1"
   },
   "devDependencies": {
     "@types/chai": "^4.2.7",
